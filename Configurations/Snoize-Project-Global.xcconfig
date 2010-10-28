@@ -3,12 +3,17 @@ SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk
     // meaning: maximum API usage allowed is 10.4
 MACOSX_DEPLOYMENT_TARGET = 10.4
     // meaning: minimum machine we'll attempt to run on is 10.4
+// We must use GCC 4.0 to target 10.4
+GCC_VERSION = 4.0
 
 // ... but on PPC we'll attempt to run on 10.3.9
 MACOSX_DEPLOYMENT_TARGET_ppc = 10.3
 
-// We must use GCC 4.0 to target 10.4
-GCC_VERSION = 4.0
+// ... and on 64-bit Intel we need to target 10.5 etc
+SDKROOT_x86_64 = /Developer/SDKs/MacOSX10.5.sdk
+MACOSX_DEPLOYMENT_TARGET_x86_64 = 10.5
+GCC_VERSION_x86_64 = 4.2
+
 
 // No need for prebinding generally; individual targets may turn it on themselves
 PREBINDING = NO

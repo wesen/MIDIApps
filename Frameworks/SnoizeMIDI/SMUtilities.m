@@ -36,7 +36,11 @@ BOOL SMClassIsSubclassOfClass(Class class, Class potentialSuperclass)
     while (class) {
         if (class == potentialSuperclass)
             return YES;
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
+        class = class_getSuperclass(class);
+#else 
         class = class->super_class;
+#endif
     }
     
     return NO;
