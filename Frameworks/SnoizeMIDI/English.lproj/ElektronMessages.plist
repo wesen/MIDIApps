@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>030072</key>
+	<string>MNM Status Response</string>
+	<key>030071</key>
+	<string>MNM Set Status</string>
+	<key>030070</key>
+	<string>MNM Status Request</string>
+	<key>030001</key>
+	<string>MNM Current Global Slot Request</string>
+	<key>030002</key>
+	<string>MNM Current Kit Request</string>
+	<key>030004</key>
+	<string>MNM Current Pattern Request</string>
+	<key>030008</key>
+	<string>MNM Current Song Request</string>
+	<key>030050</key>
+	<string>MNM Global Message</string>
+	<key>030051</key>
+	<string>MNM Global Request</string>
+	<key>030052</key>
+	<string>MNM Kit Message</string>
+	<key>030053</key>
+	<string>MNM Kit Request</string>
+	<key>030067</key>
+	<string>MNM Pattern Message</string>
+	<key>030068</key>
+	<string>MNM Pattern Request</string>
+	<key>030069</key>
+	<string>MNM Song Message</string>
+	<key>03006A</key>
+	<string>MNM Song Request</string>
+</dict>
+</plist>

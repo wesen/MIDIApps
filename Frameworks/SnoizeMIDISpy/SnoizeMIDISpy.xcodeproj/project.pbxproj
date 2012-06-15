@@ -476,6 +476,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1641044B09736388008DABCC /* Snoize-Project-Debug.xcconfig */;
 			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -483,6 +485,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1641044D09736388008DABCC /* Snoize-Project-Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};
@@ -514,9 +520,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXPORTED_SYMBOLS_FILE = Driver/SpyingMIDIDriver.exp;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Info-SpyingMIDIDriver.plist";
 				INSTALL_PATH = "/Library/Audio/MIDI Drivers";
 				PRODUCT_NAME = "MIDI Monitor";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = plugin;
 			};
 			name = Debug;
@@ -525,9 +533,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXPORTED_SYMBOLS_FILE = Driver/SpyingMIDIDriver.exp;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Info-SpyingMIDIDriver.plist";
 				INSTALL_PATH = "/Library/Audio/MIDI Drivers";
 				PRODUCT_NAME = "MIDI Monitor";
+				SDKROOT = macosx10.7;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = plugin;
 			};

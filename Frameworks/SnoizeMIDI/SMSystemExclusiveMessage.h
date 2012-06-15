@@ -37,6 +37,7 @@
 
 + (NSArray *)systemExclusiveMessagesInStandardMIDIFile:(NSString *)path;
 + (BOOL)writeSystemExclusiveMessages:(NSArray *)messages toStandardMIDIFile:(NSString *)path;
++ (NSString *)nameForElektronMessage:(NSData *)elektronData;
 
 
     // Data without the starting 0xF0 or the ending 0xF7 (if any)

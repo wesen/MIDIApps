@@ -14,6 +14,8 @@
 #import "SMSystemExclusiveMessage.h"
 
 #import "SMUtilities.h"
+#import "NSData-SMExtensions.h"
+
 
 
 
@@ -230,17 +232,80 @@ fail:
     return NSLocalizedStringFromTableInBundle(@"SysEx", @"SnoizeMIDI", SMBundleForObject(self), "displayed type of System Exclusive event");
 }
 
++ (NSString *)nameForElektronMessage:(NSData *)elektronData;
+{
+    static NSDictionary *messageNames = nil;
+    NSString *identifierString, *name;
+    
+    SMAssert(elektronData != nil);
+    SMAssert([elektronData length] >= 1);
+    SMAssert([elektronData length] <= 3);
+    
+    if (!messageNames) {
+        NSString *path;
+        
+        path = [SMBundleForObject(self) pathForResource:@"ElektronMessages" ofType:@"plist"];
+        if (path) {        
+            messageNames = [NSDictionary dictionaryWithContentsOfFile:path];
+            if (!messageNames)
+                NSLog(@"Couldn't read ElektronMessages.plist!");
+        } else {
+            NSLog(@"Couldn't find ElektronMessages.plist!");
+        }
+        
+        if (!messageNames)
+            messageNames = [NSDictionary dictionary];
+        [messageNames retain];
+    }
+    
+    identifierString = [elektronData SnoizeMIDI_lowercaseHexString];
+    if ((name = [messageNames objectForKey:identifierString]))
+        return name;
+    else
+        return @"Unknown Elektron Msg";
+}
+
+- (NSData *)elektronData;
+{
+    unsigned int length;
+    Byte *buffer;
+    
+    // If we have no data, we can't figure out a manufacturer ID.
+    if (!data || ((length = [data length]) == 0)) 
+        return nil;
+    
+    // If the first byte is not 0, the manufacturer ID is one byte long. Otherwise, return a three-byte value (if possible).
+    buffer = (Byte *)[data bytes];
+    if (length >= 6)
+        return [NSData dataWithBytes:(buffer + 3) length:3];
+    else
+        return nil;
+}
+
+
 - (NSString *)dataForDisplay;
 {
     NSString *manufacturerName, *lengthString;
 
     manufacturerName = [self manufacturerName];
     lengthString = [self sizeForDisplay];
+    
 
-    if (manufacturerName)
-        return [[manufacturerName stringByAppendingString:@"\t"] stringByAppendingString:lengthString];
-    else
+    if (manufacturerName) {
+        NSString *ret = [[manufacturerName stringByAppendingString:@"\t"] stringByAppendingString:lengthString];
+        if ([manufacturerName isEqualToString:@"Elektron"]) {
+            NSData *elektronData = [self elektronData];
+            if (elektronData) {
+                return [[[@"Elektron\t" stringByAppendingString:[SMSystemExclusiveMessage nameForElektronMessage:elektronData]] stringByAppendingString:@"\t"] stringByAppendingString:lengthString];
+            } else {
+                return ret;
+            }
+        } else {
+            return ret;
+        }
+    } else {
         return lengthString;
+    }
 }
 
 //

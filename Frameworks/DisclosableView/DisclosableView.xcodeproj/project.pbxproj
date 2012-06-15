@@ -512,8 +512,10 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_FRAMEWORKS_DIR)\"";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Info-Plugin.plist";
 				PRODUCT_NAME = DisclosableView;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = ibplugin;
 			};
 			name = Debug;
@@ -527,8 +529,10 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_FRAMEWORKS_DIR)\"";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Info-Plugin.plist";
 				PRODUCT_NAME = DisclosableView;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = ibplugin;
 			};
 			name = Release;
@@ -539,6 +543,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Info-Framework.plist";
 				PRODUCT_NAME = DisclosableView;
 				WRAPPER_EXTENSION = framework;
@@ -551,6 +556,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Info-Framework.plist";
 				PRODUCT_NAME = DisclosableView;
 				WRAPPER_EXTENSION = framework;
@@ -561,6 +567,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 16AF25C4097B1C0000BC87DC /* Snoize-Project-Debug.xcconfig */;
 			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -568,6 +576,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 16AF25C6097B1C0000BC87DC /* Snoize-Project-Release.xcconfig */;
 			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};

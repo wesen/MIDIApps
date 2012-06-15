@@ -210,7 +210,7 @@ NSString *SMTimeFormatPreferenceKey = @"SMTimeFormat";
     
     if (!manufacturerNames) {
         NSString *path;
-        
+    
         path = [SMBundleForObject(self) pathForResource:@"ManufacturerNames" ofType:@"plist"];
         if (path) {        
             manufacturerNames = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -390,7 +390,7 @@ fail:
             char buf[21];
             
             snprintf(buf, sizeof(buf), "%llu", timeStamp);
-            return [NSString stringWithCString:buf];
+            return [NSString stringWithCString:buf encoding:NSASCIIStringEncoding];
         }
             
         case SMTimeFormatHostTimeHexInteger:
@@ -399,7 +399,7 @@ fail:
             char buf[17];
             
             snprintf(buf, sizeof(buf), "%016llX", timeStamp);
-            return [NSString stringWithCString:buf];
+            return [NSString stringWithCString:buf encoding:NSASCIIStringEncoding];
         }
             
         case SMTimeFormatHostTimeNanoseconds:
@@ -407,7 +407,7 @@ fail:
             char buf[21];
             
             snprintf(buf, 21, "%llu", SMConvertHostTimeToNanos(timeStamp));
-            return [NSString stringWithCString:buf];
+            return [NSString stringWithCString:buf encoding:NSASCIIStringEncoding];
         }
             
         case SMTimeFormatHostTimeSeconds:
